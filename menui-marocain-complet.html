@@ -1,0 +1,241 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>منيو مغربي</title>
+  <style>
+    body {
+      font-family: 'Amiri', serif;
+      background-color: #f6f1e7;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #7a4b2e;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 28px;
+    }
+
+    .download-pdf, .qr-code {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .download-pdf button {
+      background-color: #a1683a;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .filter-buttons {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .filter-buttons button {
+      background-color: #d6b28c;
+      color: #442d1c;
+      border: none;
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .filter-buttons button:hover {
+      background-color: #c89c6a;
+    }
+
+    .menu-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      padding: 20px 30px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .menu-item {
+      background-color: white;
+      border: 2px solid #e3c7a2;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .menu-item:hover {
+      transform: scale(1.03);
+    }
+
+    .menu-item img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .menu-item-content {
+      padding: 15px;
+    }
+
+    .menu-item h3 {
+      margin: 0;
+      color: #7a4b2e;
+    }
+
+    .menu-item p {
+      margin: 8px 0;
+      color: #444;
+    }
+
+    footer {
+      background-color: #7a4b2e;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    منيو المقهى والمطعم المغربي
+  </header>
+
+  <div class="download-pdf">
+    <a href="https://example.com/menu-marocain.pdf" target="_blank" style="text-decoration: none;">
+      <button>📄 تحميل المنيو بصيغة PDF</button>
+    </a>
+  </div>
+
+  <div class="qr-code">
+    <p>📱 امسح QR للدخول إلى المنيو على هاتفك:</p>
+    <img src="menu_qr_code.png" alt="QR Code" width="180">
+  </div>
+
+  <div class="filter-buttons">
+    <button onclick="filterMenu('all')">الكل</button>
+    <button onclick="filterMenu('food')">الأطباق</button>
+    <button onclick="filterMenu('drink')">المشروبات</button>
+    <button onclick="filterMenu('dessert')">الحلويات</button>
+  </div>
+
+  <div class="menu-container" id="menu">
+    <!-- أطباق -->
+    <div class="menu-item" data-category="food">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Moroccan_tajine_with_chicken.jpg" alt="طاجين دجاج">
+      <div class="menu-item-content">
+        <h3>طاجين دجاج بالزيتون</h3>
+        <p>دجاج بالليمون والزيتون مطبوخ في طاجين تقليدي.</p>
+        <p><strong>السعر:</strong> 60 درهم</p>
+      </div>
+    </div>
+
+    <div class="menu-item" data-category="food">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/b/bb/Couscous-01.jpg" alt="كسكس مغربي">
+      <div class="menu-item-content">
+        <h3>كسكس بالخضار</h3>
+        <p>كسكس على البخار يقدم مع خضار موسمية مطهية.</p>
+        <p><strong>السعر:</strong> 50 درهم</p>
+      </div>
+    </div>
+
+    <div class="menu-item" data-category="food">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Harira.jpg" alt="حريرة مغربية">
+      <div class="menu-item-content">
+        <h3>حريرة مغربية</h3>
+        <p>شوربة تقليدية مغربية تقدم مع تمر وشباكية.</p>
+        <p><strong>السعر:</strong> 25 درهم</p>
+      </div>
+    </div>
+
+    <!-- مشروبات -->
+    <div class="menu-item" data-category="drink">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Moroccan_Mint_Tea.jpg" alt="شاي مغربي">
+      <div class="menu-item-content">
+        <h3>شاي مغربي بالنعناع</h3>
+        <p>شاي تقليدي بأوراق النعناع الطازجة.</p>
+        <p><strong>السعر:</strong> 12 درهم</p>
+      </div>
+    </div>
+
+    <div class="menu-item" data-category="drink">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Khawa_Marocaine.jpg" alt="قهوة مغربية">
+      <div class="menu-item-content">
+        <h3>قهوة مغربية</h3>
+        <p>قهوة سوداء مركزة مع لمسة توابل مغربية.</p>
+        <p><strong>السعر:</strong> 15 درهم</p>
+      </div>
+    </div>
+
+    <div class="menu-item" data-category="drink">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/Orange_juice_1.jpg" alt="عصير برتقال">
+      <div class="menu-item-content">
+        <h3>عصير برتقال طبيعي</h3>
+        <p>عصير فريش محضر من البرتقال الطازج.</p>
+        <p><strong>السعر:</strong> 18 درهم</p>
+      </div>
+    </div>
+
+    <!-- حلويات -->
+    <div class="menu-item" data-category="dessert">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Bastilla.jpg" alt="بسطيلة">
+      <div class="menu-item-content">
+        <h3>بسطيلة بالدجاج</h3>
+        <p>عجينة محشوة بالدجاج، اللوز، القرفة، مرشوشة بالسكر.</p>
+        <p><strong>السعر:</strong> 45 درهم</p>
+      </div>
+    </div>
+
+    <div class="menu-item" data-category="dessert">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d2/Chebakia.jpg" alt="شباكية">
+      <div class="menu-item-content">
+        <h3>شباكية</h3>
+        <p>حلوى مقلية بالعسل والسمسم تُقدم في رمضان.</p>
+        <p><strong>السعر:</strong> 10 درهم</p>
+      </div>
+    </div>
+
+    <div class="menu-item" data-category="dessert">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/d/dc/Kaab_el_ghazal.jpg" alt="كعب الغزال">
+      <div class="menu-item-content">
+        <h3>كعب الغزال</h3>
+        <p>حلوى مغربية محشوة بعجينة اللوز.</p>
+        <p><strong>السعر:</strong> 8 درهم</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    شكراً لاختياركم ضيافتنا المغربية 🌿
+  </footer>
+
+  <script>
+    function filterMenu(category) {
+      const items = document.querySelectorAll('.menu-item');
+      items.forEach(item => {
+        if (category === 'all' || item.dataset.category === category) {
+          item.classList.remove('hidden');
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
